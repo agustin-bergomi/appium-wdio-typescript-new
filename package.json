@@ -1,0 +1,25 @@
+{
+  "name": "appium-wdio-typescript-new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx wdio run ./wdio.conf.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.12.7",
+    "@wdio/appium-service": "^8.27.0",
+    "@wdio/cli": "^8.27.0",
+    "@wdio/mocha-framework": "^8.27.0",
+    "@wdio/spec-reporter": "^8.27.0",
+    "appium": "^2.10.3",
+    "appium-uiautomator2-driver": "^4.2.3",
+    "chai": "^5.2.0",
+    "mocha": "^10.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "webdriverio": "^8.44.1"
+  }
+}

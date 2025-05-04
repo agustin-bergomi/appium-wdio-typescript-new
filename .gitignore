@@ -1,0 +1,8 @@
+node_modules/
+dist/
+errorShots/
+*.apk
+.env
+.DS_Store
+.idea/
+.vscode/
