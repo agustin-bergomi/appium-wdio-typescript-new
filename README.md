@@ -1,33 +1,54 @@
-# ✅ Reporte de ejecución Jenkins - Job Appium
+# 🚀 Proyecto de Integración Appium + Jenkins + WebDriverIO + TypeScript
 
-**Fecha de ejecución:** 05/05/2025  
-**Estado final del Job:** ✔️ SUCCESS  
-**Repositorio:** [agustin-bergomi/appium-wdio-typescript-new](https://github.com/agustin-bergomi/appium-wdio-typescript-new)  
-**APK ejecutada:** `./apps/ApiDemos-debug.apk`
+**Autor:** Agustín Bergomi  
+**Entorno:** macOS + Jenkins local + Appium + WebDriverIO + Mocha + TypeScript
 
-## 🧪 Resumen de Tests Ejecutados
+---
 
-| Archivo de Test                        | Descripción                                     | Resultado | Tiempo     |
-|----------------------------------------|-------------------------------------------------|-----------|------------|
-| `animations.spec.ts`                  | Navegación a Animation y validación de "Bouncing Balls" | ✅ Passed | 11.6s      |
-| `apiDemos.spec.ts`                    | Navegación a Views y validación de "Buttons"    | ✅ Passed | 4.2s       |
-| `text.spec.ts`                        | Validación de visibilidad del elemento "Text"   | ✅ Passed | 2.1s       |
-| `views.spec.ts`                       | Navegación a Views y validación de "Buttons"    | ✅ Passed | 11.6s      |
+## 🧾 Objetivo
 
-**Resultado Global:**  
-✔️ **4 pruebas ejecutadas con éxito**  
-📊 **Duración total:** 1 minuto 32 segundos
+Automatizar la ejecución de pruebas mobile sobre una app Android (`ApiDemos-debug.apk`) utilizando Jenkins como herramienta de integración continua, con ejecución paralela y control del proceso Appium.
 
-## 🔧 Información técnica
+---
 
-- **Node version:** v21.6.0  
-- **NPM version:** 10.2.4  
-- **Appium version:** lanzado desde servicio con `appium --base-path / --port 4723`  
-- **Dispositivo emulado:** Pixel 7 API 34 - Android 14  
-- **AutomationName:** UiAutomator2  
+## 🛠️ Pasos Realizados
 
-## 🧹 Finalización
+### 1. **Configuración del Proyecto**
+- Se subió el proyecto a GitHub con estructura WDIO + Appium.
+- Se creó el archivo `wdio.conf.ts` con las capacidades necesarias:
+  - `platformName: Android`
+  - `automationName: UiAutomator2`
+  - `deviceName: Pixel 7 API 34`
+  - `app: ./apps/ApiDemos-debug.apk`
 
-El job finalizó correctamente con cierre de workers y terminación limpia del proceso Appium.
+### 2. **Preparación del entorno Jenkins**
+- Se instaló Jenkins en local.
+- Se configuró un nuevo **Job freestyle** llamado `Appium job Agus`.
+- Se agregó el repositorio de GitHub como fuente.
+- Se agregó un paso de shell con:
+  ```sh
+  export ANDROID_HOME=...
+  export PATH=...
+  node -v
+  npm -v
+  npm install
+  npm test
+  ```
+- El APK `ApiDemos-debug.apk` fue agregado al repositorio (`./apps/`).
 
-> `Finished: SUCCESS`
+### 3. **Resolución de Errores**
+
+| Error                                                                                     | Solución                                                                 |
+|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `node: command not found`                                                                 | Se agregó `/usr/local/bin` al PATH.                                     |
+| `The application ... does not exist or is not accessible`                                 | El APK no estaba en el workspace de Jenkins; se resolvió al agregarlo al repo. |
+| Problemas de nombres con espacios como `Appium job Agus`                                  | No se cambió finalmente, pero no fue necesario gracias al fix del APK.  |
+
+---
+
+## ✅ Resultado Final
+
+Todos los tests se ejecutaron correctamente. Jenkins marcó el build como `SUCCESS`.
+
+---
+
