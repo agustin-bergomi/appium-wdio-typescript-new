@@ -1,13 +1,14 @@
 {
-    "compilerOptions": {
-      "target": "ES2019",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "types": ["node", "@wdio/globals/types", "mocha"]
-    },
-    "include": ["./test/**/*.ts"]
-  }
-  
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "types": ["node", "@wdio/globals/types", "mocha"]
+  },
+  "include": ["./test/**/*.ts"]
+}
