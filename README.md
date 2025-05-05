@@ -1,54 +1,67 @@
-# 🚀 Proyecto de Integración Appium + Jenkins + WebDriverIO + TypeScript
+# 📱 Proyecto de Automatización Mobile con Appium, WebDriverIO y Jenkins
 
-**Autor:** Agustín Bergomi  
-**Entorno:** macOS + Jenkins local + Appium + WebDriverIO + Mocha + TypeScript
 
 ---
 
-## 🧾 Objetivo
+## ✅ ¿Qué se hizo en este proyecto?
 
-Automatizar la ejecución de pruebas mobile sobre una app Android (`ApiDemos-debug.apk`) utilizando Jenkins como herramienta de integración continua, con ejecución paralela y control del proceso Appium.
+1. **Se creó y configuró un proyecto de automatización mobile** con:
+   - Appium + WebDriverIO (v8)
+   - TypeScript como lenguaje
+   - Mocha como framework de testing
+   - Reporter `spec` y `allure` para resultados
+   - Cobertura de código (`code coverage`) con NYC
 
----
+2. **Se ejecutaron pruebas funcionales** sobre la app `ApiDemos-debug.apk`, incluyendo navegación, interacción con elementos y validaciones.
 
-## 🛠️ Pasos Realizados
+3. **Se subió el proyecto a GitHub**:  
+   [Repositorio](https://github.com/agustin-bergomi/appium-wdio-typescript-new)
 
-### 1. **Configuración del Proyecto**
-- Se subió el proyecto a GitHub con estructura WDIO + Appium.
-- Se creó el archivo `wdio.conf.ts` con las capacidades necesarias:
-  - `platformName: Android`
-  - `automationName: UiAutomator2`
-  - `deviceName: Pixel 7 API 34`
-  - `app: ./apps/ApiDemos-debug.apk`
+4. **Se integró GitHub Actions** para CI, aunque se dejó de lado momentáneamente al incorporar Jenkins.
 
-### 2. **Preparación del entorno Jenkins**
-- Se instaló Jenkins en local.
-- Se configuró un nuevo **Job freestyle** llamado `Appium job Agus`.
-- Se agregó el repositorio de GitHub como fuente.
-- Se agregó un paso de shell con:
-  ```sh
-  export ANDROID_HOME=...
-  export PATH=...
-  node -v
-  npm -v
-  npm install
-  npm test
-  ```
-- El APK `ApiDemos-debug.apk` fue agregado al repositorio (`./apps/`).
+5. **Se configuró Jenkins localmente** para correr el proyecto:
+   - Se creó un **Job freestyle** en `/Users/agustinbergomi/.jenkins`
+   - Se definieron las variables `ANDROID_HOME`, `PATH` con `platform-tools` y `emulator`
+   - Se instaló Node.js y dependencias con `npm install`
+   - Se ejecutaron las pruebas con `npm test`
 
-### 3. **Resolución de Errores**
-
-| Error                                                                                     | Solución                                                                 |
-|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| `node: command not found`                                                                 | Se agregó `/usr/local/bin` al PATH.                                     |
-| `The application ... does not exist or is not accessible`                                 | El APK no estaba en el workspace de Jenkins; se resolvió al agregarlo al repo. |
-| Problemas de nombres con espacios como `Appium job Agus`                                  | No se cambió finalmente, pero no fue necesario gracias al fix del APK.  |
+6. **Se subió la APK al repositorio** para que Jenkins pueda acceder al path relativo.
 
 ---
 
-## ✅ Resultado Final
+## 🚀 Resultado de la ejecución en Jenkins
 
-Todos los tests se ejecutaron correctamente. Jenkins marcó el build como `SUCCESS`.
+- 4 pruebas ejecutadas exitosamente
+- Reporter `spec` mostró los resultados de cada spec con su tiempo
+- Jenkins marcó el build como `SUCCESS`
 
 ---
 
+## ⚠️ Errores y obstáculos resueltos
+
+| Descripción del Error | Solución Aplicada |
+|------------------------|-------------------|
+| `node: command not found` | Se agregó `/usr/local/bin` al `PATH` |
+| `APK not found` | Se subió la APK al repositorio para que Jenkins la encuentre |
+| Workers en paralelo colisionaban con el emulador | Se identificó que, aunque se ejecutan en paralelo, **usan el mismo emulador y por eso corren uno por uno** |
+| `Jenkinsfile` generaba conflictos | Se optó por un **Job freestyle** eliminando la dependencia del Jenkinsfile |
+
+---
+
+## 🧪 Detalles técnicos del testing
+
+- Pruebas sobre elementos de UI (navegación, botones, vistas)
+- Emulador usado: `Pixel 7 API 34` con Android 14
+- Estrategia de ejecución: **paralela lógica**, pero **secuencial efectiva** por compartir el emulador
+
+---
+
+## 📌 Pendientes
+
+- ⚙️ Configurar **emuladores múltiples** o integrar con **servicios cloud** (BrowserStack, SauceLabs)
+- 🔧 Aumentar cobertura de pruebas (más casos de uso, validaciones)
+- ☁️ Subir Jenkins a un entorno cloud o usar Jenkins en contenedores (Docker)
+- 📈 Integrar Allure en Jenkins para resultados visuales
+- 💬 Integrar notificaciones por Slack/Mail si es necesario
+
+---
