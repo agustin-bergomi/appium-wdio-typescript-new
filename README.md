@@ -60,10 +60,16 @@
 - Reporter `spec` mostró los resultados de cada spec con su tiempo
 - Jenkins marcó el build como `SUCCESS`
 
+![tests passed](https://github.com/user-attachments/assets/441bf7e2-283b-460e-aec9-b855344fd047)
+
+
 ---
 
 7. **Se agrego libreria para Test Coverage**
    En este caso como no esta conectado a un proyecto muestra cero coverage.
+
+![Test coverage](https://github.com/user-attachments/assets/b30c1107-25a7-402f-8b71-c59014cc5d1f)
+
 
 
 
