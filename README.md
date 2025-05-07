@@ -42,13 +42,13 @@
 ![Github action gif](https://github.com/user-attachments/assets/21589020-98cb-4b3e-9266-75e214b14330)
 
 
-- Pending: analizar fallo del paso 5.
 
 6. **Se configuró Jenkins localmente** para correr el proyecto:
    - Se creó un **Job freestyle** en `/Users/agustinbergomi/.jenkins`
    - Se definieron las variables `ANDROID_HOME`, `PATH` con `platform-tools` y `emulator`
    - Se instaló Node.js y dependencias con `npm install`
    - Se ejecutaron las pruebas con `npm test`
+- Pending: analizar fallo de jenkins
 
 7. **Se subió la APK al repositorio** para que Jenkins pueda acceder al path relativo.
 
