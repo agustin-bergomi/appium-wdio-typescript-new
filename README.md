@@ -35,6 +35,11 @@
 
    <img width="1640" alt="Github Actions" src="https://github.com/user-attachments/assets/962bc38b-0875-4dbb-9b4a-03db1e0236de" />
 
+   
+
+![Github action gif](https://github.com/user-attachments/assets/21589020-98cb-4b3e-9266-75e214b14330)
+
+
 - Pending: analizar fallo del paso 5.
 
 6. **Se configuró Jenkins localmente** para correr el proyecto:
@@ -55,6 +60,11 @@
 
 ---
 
+7. **Se agrego libreria para Test Coverage**
+   En este caso como no esta conectado a un proyecto muestra cero coverage.
+
+
+
 ## ⚠️ Errores y obstáculos resueltos
 
 | Descripción del Error | Solución Aplicada |
@@ -70,16 +80,17 @@
 
 - Pruebas sobre elementos de UI (navegación, botones, vistas)
 - Emulador usado: `Pixel 7 API 34` con Android 14
-- Estrategia de ejecución: **paralela lógica**, pero **secuencial efectiva** por compartir el emulador
+- Estrategia de ejecución: **paralela lógica**, pero **secuencial efectiva** por compartir el emulador: Se podria prender 2 emuladores y poner multicapabilities para correr tests en paralelo.
 
 ---
 
 ## 📌 Pendientes
 
-- ⚙️ Configurar **emuladores múltiples** o integrar con **servicios cloud** (BrowserStack, SauceLabs)
-- 🔧 Aumentar cobertura de pruebas (más casos de uso, validaciones)
-- ☁️ Subir Jenkins a un entorno cloud o usar Jenkins en contenedores (Docker)
-- 📈 Integrar Allure en Jenkins para resultados visuales
-- 💬 Integrar notificaciones por Slack/Mail si es necesario
+- Agregar mas tests
+- Revisar Jenknis
+- Agregar mas tareas de jenkins
+- Agregar mas github Actions
+- Transformar todo a POM
+- Otras mejoras
 
 ---
