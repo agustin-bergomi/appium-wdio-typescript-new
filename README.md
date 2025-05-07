@@ -11,6 +11,8 @@
    - Mocha como framework de testing
    - Reporter `spec`  para resultados
    - Cobertura de código (`code coverage`) con NYC
+   - Jenkins local para ejecutar los tests
+   - Github Actions para ejecutar los tests cuando se hace push al repo
 
 2. **Se ejecutaron pruebas funcionales** sobre la app `ApiDemos-debug.apk`, incluyendo navegación, interacción con elementos y validaciones.
 
