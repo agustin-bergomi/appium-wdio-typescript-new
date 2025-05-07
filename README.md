@@ -9,7 +9,7 @@
    - Appium + WebDriverIO (v8)
    - TypeScript como lenguaje
    - Mocha como framework de testing
-   - Reporter `spec` y `allure` para resultados
+   - Reporter `spec`  para resultados
    - Cobertura de código (`code coverage`) con NYC
 
 2. **Se ejecutaron pruebas funcionales** sobre la app `ApiDemos-debug.apk`, incluyendo navegación, interacción con elementos y validaciones.
@@ -17,15 +17,33 @@
 3. **Se subió el proyecto a GitHub**:  
    [Repositorio](https://github.com/agustin-bergomi/appium-wdio-typescript-new)
 
-4. **Se integró GitHub Actions** para CI, aunque se dejó de lado momentáneamente al incorporar Jenkins.
+4. **Se integró GitHub Actions** para CI.
+   
+    ✅ GitHub Actions
 
-5. **Se configuró Jenkins localmente** para correr el proyecto:
+    Creacion del archivo .github/workflows/test.yml.
+
+    Definicion de workflow que:
+
+        Instala dependencias (npm ci)
+
+        Inicia Appium (appium --log)
+
+        Ejecutaba los tests con npx wdio run wdio.conf.ts
+
+    Se ejecuta automáticamente al hacer push a la rama principal.
+
+   <img width="1640" alt="Github Actions" src="https://github.com/user-attachments/assets/962bc38b-0875-4dbb-9b4a-03db1e0236de" />
+
+- Pending: analizar fallo del paso 5.
+
+6. **Se configuró Jenkins localmente** para correr el proyecto:
    - Se creó un **Job freestyle** en `/Users/agustinbergomi/.jenkins`
    - Se definieron las variables `ANDROID_HOME`, `PATH` con `platform-tools` y `emulator`
    - Se instaló Node.js y dependencias con `npm install`
    - Se ejecutaron las pruebas con `npm test`
 
-6. **Se subió la APK al repositorio** para que Jenkins pueda acceder al path relativo.
+7. **Se subió la APK al repositorio** para que Jenkins pueda acceder al path relativo.
 
 ---
 
